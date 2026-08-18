@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Growing on X</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A short guide to growing on X: six chapters of tactics, each with real posts that worked.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Growing on X">
+<meta property="og:description" content="A short guide to growing on X: six chapters of tactics, each with real posts that worked.">
+<meta property="og:image" content="https://mozetech.github.io/x-guide/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Growing on X">
+<meta name="twitter:description" content="Six chapters of tactics, each with real posts that worked.">
+<meta name="twitter:image" content="https://mozetech.github.io/x-guide/assets/og.jpg">
+<link rel="preload" href="assets/fraunces-roman.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+<style>
+  @font-face {
+    font-family: 'Fraunces';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url(assets/fraunces-roman.woff2) format('woff2');
+  }
+  @font-face {
+    font-family: 'Fraunces';
+    font-style: italic;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url(assets/fraunces-italic.woff2) format('woff2');
+  }
+
+  :root {
+    --page: #f3eee5;
+    --ink: #221d18;
+    --ink-soft: #6d645a;
+    --ink-faint: #a89d8d;
+    --accent: #d4542b;
+    --glass: rgba(255, 255, 255, 0.58);
+    --glass-strong: rgba(255, 255, 255, 0.78);
+    --edge: rgba(255, 255, 255, 0.9);
+    --hairline: rgba(60, 40, 20, 0.1);
+    --shadow-glass: 0 24px 70px -28px rgba(50, 30, 12, 0.38);
+    --shadow-soft: 0 12px 40px -18px rgba(50, 30, 12, 0.3);
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--page);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* warm blobs the glass refracts, like the forkcast trailer */
+  .sky {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.55;
+    will-change: transform;
+  }
+  .blob.b1 { width: 58vmax; height: 58vmax; top: -24vmax; left: -16vmax; background: #ffd2a8; animation: drift1 30s ease-in-out infinite alternate; }
+  .blob.b2 { width: 44vmax; height: 44vmax; bottom: -20vmax; right: -12vmax; background: #ffe6c0; animation: drift2 36s ease-in-out infinite alternate; }
+  .blob.b3 { width: 32vmax; height: 32vmax; top: 42%; left: 58%; background: #ffd9cd; opacity: 0.45; animation: drift1 26s ease-in-out infinite alternate-reverse; }
+  @keyframes drift1 { to { transform: translate(5vmax, 4vmax) scale(1.08); } }
+  @keyframes drift2 { to { transform: translate(-5vmax, -5vmax) scale(0.94); } }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 4vw, 44px) 64px;
+  }
+
+  /* ---------- masthead ---------- */
+  .mast {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 38px 2px 30px;
+  }
+  .mast h1 {
+    font-family: var(--serif);
+    font-weight: 560;
+    font-size: clamp(24px, 3.4vw, 32px);
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 40;
+  }
+  .mast h1 em {
+    font-style: italic;
+    font-weight: 480;
+    color: var(--accent);
+  }
+  .mast .note {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  /* ---------- chapters ---------- */
+  .panel { margin-bottom: clamp(70px, 10vh, 110px); }
+
+  .chapno {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .panel-head {
+    max-width: 660px;
+    margin: 0 auto 30px;
+    text-align: center;
+  }
+  .panel-head h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(30px, 4.6vw, 44px);
+    letter-spacing: -0.015em;
+    line-height: 1.08;
+    text-wrap: balance;
+    font-variation-settings: "opsz" 70;
+    margin-bottom: 12px;
+  }
+  .panel-head h2 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 440;
+  }
+  .panel-head p {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- instagram-style carousel ---------- */
+  .deck-shell { position: relative; }
+
+  .deck {
+    display: flex;
+    align-items: stretch;
+    gap: 22px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 10px 0 26px;
+    scrollbar-width: none;
+    cursor: grab;
+  }
+  .deck::-webkit-scrollbar { display: none; }
+  .deck.dragging { cursor: grabbing; scroll-snap-type: none; }
+  .deck.dragging .card { pointer-events: none; }
+
+  /* spacers so first/last card can center */
+  .deck::before, .deck::after {
+    content: "";
+    flex: 0 0 calc(50% - min(430px, 88vw) / 2 - 22px);
+  }
+
+  .card {
+    flex: 0 0 min(430px, 88vw);
+    min-height: 480px;
+    scroll-snap-align: center;
+    background: var(--glass);
+    border: 1.5px solid var(--edge);
+    border-radius: 30px;
+    -webkit-backdrop-filter: blur(26px) saturate(1.4);
+    backdrop-filter: blur(26px) saturate(1.4);
+    box-shadow: var(--shadow-glass), inset 0 1.5px 0 var(--edge);
+    padding: clamp(24px, 3.4vw, 38px);
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s;
+  }
+  .card.off {
+    transform: scale(0.93);
+    opacity: 0.55;
+  }
+
+  .card .icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: var(--glass-strong);
+    border: 1px solid var(--edge);
+    color: var(--accent);
+    box-shadow: inset 0 1px 0 var(--edge);
+    margin-bottom: 2px;
+  }
+  .card .icon svg { width: 22px; height: 22px; }
+
+  .card h3 {
+    font-family: var(--serif);
+    font-weight: 560;
+    font-size: clamp(20px, 2.6vw, 25px);
+    letter-spacing: -0.01em;
+    line-height: 1.14;
+    font-variation-settings: "opsz" 40;
+  }
+  .card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .card .why {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--hairline);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .card .why b {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 480;
+    font-size: 14px;
+    color: var(--accent);
+    margin-right: 2px;
+  }
+  .card .lead { font-size: 13.5px; }
+
+  /* ---------- embedded X posts ---------- */
+  .xpost {
+    display: block;
+    margin-top: 2px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--hairline);
+    border-radius: 18px;
+    padding: 14px 16px 12px;
+    text-decoration: none;
+    color: var(--ink);
+    font-family: var(--sans);
+    box-shadow: 0 12px 34px -20px rgba(50, 30, 12, 0.4);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .xpost:hover { transform: translateY(-2px); box-shadow: 0 18px 44px -20px rgba(50, 30, 12, 0.45); }
+  .xhead { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .xav { width: 38px; height: 38px; border-radius: 50%; flex: none; }
+  .xwho { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+  .xname { font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .xhandle { font-size: 12.5px; color: #71767b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .xlogo { margin-left: auto; width: 15px; height: 15px; color: var(--ink); flex: none; }
+  .xtext { font-size: 13.5px; line-height: 1.45; margin-bottom: 10px; white-space: pre-line; overflow-wrap: break-word; }
+  .xmore { color: #1d9bf0; }
+  .xmedia { border-radius: 13px; overflow: hidden; display: grid; gap: 2px; }
+  .xmedia.two { grid-template-columns: 1fr 1fr; }
+  .xm { position: relative; height: 200px; }
+  .xmedia.two .xm { height: 190px; }
+  .xmedia.three { grid-template-columns: 1fr 1fr; grid-template-rows: 112px 112px; }
+  .xmedia.three .xm { height: 100%; }
+  .xmedia.three .xm:first-child { grid-row: span 2; }
+  .xreplyctx { font-size: 12.5px; color: #71767b; margin-bottom: 3px; }
+  .xblue { color: #1d9bf0; }
+
+  /* ---------- DM mock ---------- */
+  .dm {
+    margin-top: 2px;
+    background: #15181c;
+    border-radius: 18px;
+    padding: 14px 14px 12px;
+    font-family: var(--sans);
+    color: #e7e9ea;
+    box-shadow: 0 12px 34px -20px rgba(50, 30, 12, 0.45);
+  }
+  .dm-head {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  }
+  .dm-av {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #3b4754;
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #e7e9ea;
+    flex: none;
+  }
+  .dm-who { display: flex; flex-direction: column; line-height: 1.25; }
+  .dm-name { font-size: 13.5px; font-weight: 700; display: flex; align-items: center; gap: 4px; }
+  .dm-name svg { width: 14px; height: 14px; fill: #1d9bf0; }
+  .dm-sub { font-size: 11.5px; color: #71767b; }
+  .dm-bubble {
+    max-width: 88%;
+    font-size: 12.5px;
+    line-height: 1.45;
+    padding: 9px 12px;
+    border-radius: 16px;
+    margin-bottom: 8px;
+    white-space: pre-line;
+  }
+  .dm-out { background: #1d9bf0; color: #fff; margin-left: auto; border-bottom-right-radius: 5px; }
+  .dm-in { background: #2f3336; border-bottom-left-radius: 5px; }
+  .dm-meta { font-size: 10.5px; color: #71767b; text-align: right; margin: -4px 2px 8px; }
+  .dm-meta.left { text-align: left; }
+  .dm-note { font-size: 11px; color: #71767b; text-align: center; margin: 10px 0; }
+
+  /* ---------- inline video ---------- */
+  .vidwrap {
+    margin-top: 2px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 12px 34px -20px rgba(50, 30, 12, 0.45);
+  }
+  .vidwrap video { width: 100%; display: block; }
+  .vidcap {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-align: center;
+    margin-top: 10px;
+  }
+  .xm img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .xm .play {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+  }
+  .xm .play span {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(15, 20, 25, 0.6);
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    display: grid;
+    place-items: center;
+  }
+  .xm .play svg { width: 18px; height: 18px; fill: #fff; margin-left: 3px; }
+  .xstats {
+    display: flex;
+    gap: 18px;
+    margin-top: 10px;
+    color: #71767b;
+    font-size: 12.5px;
+    align-items: center;
+  }
+  .xstat { display: inline-flex; gap: 5px; align-items: center; }
+  .xstat svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ---------- carousel controls ---------- */
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--edge);
+    background: var(--glass-strong);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow-soft), inset 0 1.5px 0 var(--edge);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: var(--ink);
+    transition: opacity 0.25s, transform 0.2s;
+  }
+  .arrow.prev { left: clamp(-6px, 1vw, 14px); }
+  .arrow.next { right: clamp(-6px, 1vw, 14px); }
+  .arrow:hover { transform: translateY(-50%) scale(1.07); }
+  .arrow:active { transform: translateY(-50%) scale(0.95); }
+  .arrow[disabled] { opacity: 0; pointer-events: none; }
+  .arrow svg { width: 16px; height: 16px; }
+  .arrow:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+  }
+  .dots .d {
+    width: 6.5px;
+    height: 6.5px;
+    border-radius: 999px;
+    background: rgba(60, 40, 20, 0.18);
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .dots .d.on { width: 20px; background: var(--accent); }
+
+  /* ---------- footer ---------- */
+  .footer {
+    margin-top: 58px;
+    text-align: center;
+  }
+  .footer p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 640px) {
+    .mast { flex-direction: column; gap: 4px; padding-top: 26px; }
+    .card { min-height: 0; }
+    .xmedia.two .xm { height: 150px; }
+    .arrow { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+
+<div class="sky" aria-hidden="true">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+</div>
+
+<div class="wrap">
+
+  <header class="mast">
+    <h1>A short guide to <em>growing on X</em></h1>
+    <span class="note">six chapters &middot; swipe through each</span>
+  </header>
+
+  <!-- ============ I · THE BASICS ============ -->
+  <section class="panel" id="p-1">
+    <div class="panel-head">
+      <div class="chapno">i &middot; The basics</div>
+      <h2>Likes are rented. <em>Followers are owned.</em></h2>
+      <p>What the algorithm rewards, and how to make content people follow you for.</p>
+    </div>
+    <div class="deck-shell">
+      <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="deck" tabindex="0" aria-label="The basics, cards">
+
+        <article class="card">
+          <h3>Make content that's useful for an end</h3>
+          <p class="lead">People follow you to imitate you. Drop the entire prompt and the post becomes a bookmark magnet:</p>
+          <a class="xpost" href="https://x.com/jumperz/status/2077884505612750861" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-jump.jpg" alt="">
+              <div class="xwho"><span class="xname">JUMPERZ</span><span class="xhandle">@jumperz &middot; Jul 16</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">Dropping the full prompt below for anyone who wants to try it.
+
+this was one generation with no follow-ups, results will obviously vary between runs..
+
+=====================
+
+Build a complete, production-quality launch website for Kimi K3 using Next.js, React, TypeScript, GSAP ScrollTrigger, and restrained Lenis smooth scrolling.
+
+REFERENCE:
+andonorris official website&hellip; <span class="xmore">Show more</span></p>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>13</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>10</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>236</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>9.9K</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg></div>
+          <h3>Attach a picture or a video</h3>
+          <p>Plain text tweets are fine, but the algorithm simply pushes media harder. If a photo or video can carry the post, it should.</p>
+          <div class="why"><b>Why it works</b> &mdash; media posts earn more feed placement before anyone has engaged with them.</div>
+        </article>
+
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg></div>
+          <h3>Replies push your post into feeds</h3>
+          <p>Every reply on your post extends its reach. Posts that invite an answer, a question, an offer to share the prompt, outperform polished statements nobody feels like responding to.</p>
+          <div class="why"><b>Why it works</b> &mdash; reply beats retweet beats bookmark beats like, and X now weights replies on a friend's post 15x. Write posts your circle has to answer.</div>
+        </article>
+
+      </div>
+      <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="dots" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============ II · RIDING TRENDS ============ -->
+  <section class="panel" id="p-2">
+    <div class="panel-head">
+      <div class="chapno">ii &middot; Riding trends</div>
+      <h2>Ride what's <em>already moving</em></h2>
+      <p>You don't have to create a wave. There's always one happening. The job is to enter it with the right keywords before it passes.</p>
+    </div>
+    <div class="deck-shell">
+      <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="deck" tabindex="0" aria-label="Riding trends, cards">
+
+        <article class="card">
+          <h3>Post from inside the event</h3>
+          <p class="lead">Name the event while it's hot; that community is already searching X for exactly these posts. 12.5K views from a vending machine:</p>
+          <a class="xpost" href="https://x.com/MozeTech/status/2086269933143658603" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-moze.jpg" alt="">
+              <div class="xwho"><span class="xname">Max Med</span><span class="xhandle">@MozeTech &middot; Aug 9</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">Someone fr hacked the vending machine at defcon &#128557;</p>
+            <div class="xmedia two">
+              <div class="xm"><img loading="lazy" decoding="async" src="assets/vid-moze.jpg" alt=""><div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div></div>
+              <div class="xm"><img loading="lazy" decoding="async" src="assets/ph-moze.jpg" alt=""></div>
+            </div>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>4</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>5</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>118</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>12.5K</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="card">
+          <h3>Be first to the newest tech</h3>
+          <p class="lead">When a new model drops, be among the first to do something genuinely cool with it. Day-one posts soak up the whole search wave before it gets crowded:</p>
+          <a class="xpost" href="https://x.com/victormustar/status/2089310616854892818" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-victor.jpg" alt="">
+              <div class="xwho"><span class="xname">Victor M</span><span class="xhandle">@victormustar &middot; Aug 17</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">Cool MiniMax-H3 use case unlocked for game sprites creation, here's the workflow:
+
+1. one character design still, on a flat magenta background
+2. one 5s H3 clip per move (walk, jump, punch, kick, block...)
+3. cut each clip down to its pose extremes
+4. key out the magenta, pack into a sprite atlas</p>
+            <div class="xmedia one"><div class="xm"><img loading="lazy" decoding="async" src="assets/vid-victor.jpg" alt=""><div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div></div></div>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>59</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>134</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>1.7K</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>188K</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <h3>Use the words in the zeitgeist</h3>
+          <p>Whatever is going viral this week, your post needs those exact words. If "AI escaping its sandbox" is the story and you're at a demo of something like it, say it in those terms. This matters more than almost anything else.</p>
+          <div class="why"><b>Why it works</b> &mdash; the algorithm matches your words against what people search. Wrong words, invisible post.</div>
+        </article>
+
+        <article class="card">
+          <h3>Post the room others weren't in</h3>
+          <p class="lead">Host something small and niche, then post one picture. 71 people replied to this one asking for the invite, and every reply pushed it further:</p>
+          <a class="xpost" href="https://x.com/luci_holland/status/2083310043672522840" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-luci.jpg" alt="">
+              <div class="xwho"><span class="xname">Luci Holland</span><span class="xhandle">@luci_holland &middot; Jul 31</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">we&rsquo;re hosting a rooftop soir&eacute;e in SF
+
+for founders, operators, and designers
+
+dm or comment for the invite</p>
+            <div class="xmedia one"><div class="xm"><img loading="lazy" decoding="async" src="assets/ph-luci.jpg" alt=""></div></div>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>71</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>2</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>190</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>32K</span>
+            </div>
+          </a>
+        </article>
+
+      </div>
+      <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="dots" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============ III · STARTING FROM ZERO ============ -->
+  <section class="panel" id="p-3">
+    <div class="panel-head">
+      <div class="chapno">iii &middot; Starting from zero</div>
+      <h2>Small accounts grow in <em>other people's threads</em></h2>
+      <p>The algorithm is not kind to new accounts. Your post reaches 40 people and nobody interacts, because nobody knows you. So don't post. Reply.</p>
+    </div>
+    <div class="deck-shell">
+      <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="deck" tabindex="0" aria-label="Starting from zero, cards">
+
+        <article class="card">
+          <h3>Reply where the likes are low</h3>
+          <p class="lead">Find honest posts sitting at a handful of likes, like this one, and actually talk to the person. On a small post your reply is half the conversation:</p>
+          <a class="xpost" href="https://x.com/kelvinbuildss/status/2076776457066467423" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-kelvin.jpg" alt="">
+              <div class="xwho"><span class="xname">Kelvin Celso</span><span class="xhandle">@kelvinbuildss &middot; Jul 13</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">tried copying a famous app.
+
+spent money promoting it, and nobody stayed.
+
+the mistake: I built in a saturated niche without my own angle.
+
+next time: validate the market first, then build.</p>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>9</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>0</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>11</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>882</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="card">
+          <h3>Don't be the 400th "so cool" reply</h3>
+          <p class="lead">Under every big post is a wall of accounts agreeing, and nobody cares. An original take or the question everyone's quietly wondering becomes its own post. This reply earned 595 likes on its own:</p>
+          <a class="xpost" href="https://x.com/tszzl/status/2088559477809438737" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-roon.jpg" alt="">
+              <div class="xwho"><span class="xname">roon</span><span class="xhandle">@tszzl &middot; Aug 15</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xreplyctx">Replying to <span class="xblue">@andrewho03</span></p>
+            <p class="xtext">did you forget to negate the sign in your reward function or something?</p>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>17</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>1</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>595</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>30K</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="card">
+          <h3>Cold DMs actually work here</h3>
+          <p class="lead">Open with something real about what they're into, not a pitch. This cold message got a 30.5K-follower founder writing paragraphs back within the hour:</p>
+          <div class="dm">
+            <div class="dm-head">
+              <div class="dm-av">R</div>
+              <div class="dm-who">
+                <span class="dm-name">Reggie James <svg viewBox="0 0 24 24"><path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.66-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.91-.2-3.92.81s-1.26 2.52-.8 3.91c-1.31.67-2.2 1.91-2.2 3.34s.89 2.67 2.2 3.34c-.46 1.39-.21 2.9.8 3.91s2.52 1.26 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.68-.88 3.34-2.19c1.39.45 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z"/></svg></span>
+                <span class="dm-sub">30.5K followers</span>
+              </div>
+            </div>
+            <div class="dm-bubble dm-out">How come you're reading screwtape? I've never run into anyone in tech tryna understand &amp; study the corruption of the human soul</div>
+            <div class="dm-meta">1:12 pm</div>
+            <div class="dm-note">This conversation is now end-to-end encrypted</div>
+            <div class="dm-bubble dm-in">- core Christian fiction canon
+
+- I read like half of it years ago and wanted to finish it. So it was also a return
+
+- I forgot who said it but there&rsquo;s a quote I like &ldquo;if you&rsquo;re going to have a robust theology, you need to have a working demonology&rdquo;
+
+- I write a good amount about technology through the lens of Christian theology</div>
+            <div class="dm-meta left">just now</div>
+          </div>
+        </article>
+
+      </div>
+      <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="dots" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============ IV · BORROWING AUDIENCES ============ -->
+  <section class="panel" id="p-4">
+    <div class="panel-head">
+      <div class="chapno">iv &middot; Borrowing audiences</div>
+      <h2>Borrow a <em>bigger audience</em></h2>
+      <p>One retweet from the right person outperforms months of posting into the void. It can be earned, and there's a more combative route too.</p>
+    </div>
+    <div class="deck-shell">
+      <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="deck" tabindex="0" aria-label="Borrowing audiences, cards">
+
+        <article class="card">
+          <h3>A selfie is not a story</h3>
+          <p class="lead">"Met this guy today" does nothing. Do something worth posting and tag who it involves. A hacked badge beats any handshake photo, 82K views:</p>
+          <a class="xpost" href="https://x.com/ivoinetech/status/2086156143349612782" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-ivoine.jpg" alt="">
+              <div class="xwho"><span class="xname">Ivoine In SF</span><span class="xhandle">@ivoinetech &middot; Aug 8</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">I hacked my badge at defcon and turned it into a camera. <span class="xblue">@0dayCTF</span>
+
+<span class="xblue">#defcon #defcon34</span></p>
+            <div class="xmedia three">
+              <div class="xm"><img loading="lazy" decoding="async" src="assets/ph-iv1.jpg" alt=""></div>
+              <div class="xm"><img loading="lazy" decoding="async" src="assets/ph-iv2.jpg" alt=""></div>
+              <div class="xm"><img loading="lazy" decoding="async" src="assets/ph-iv3.jpg" alt=""></div>
+            </div>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>27</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>56</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>1.3K</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>82K</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 10.5L21 3"/><path d="M16 3h5v5"/><path d="M19 13v5a3 3 0 01-3 3H6a3 3 0 01-3-3V8a3 3 0 013-3h5"/></svg></div>
+          <h3>Tag them, every time</h3>
+          <p>Two things happen when you tag the person in a post about something genuinely good you did with them: the post reaches their audience, and they feel compelled to retweet it, because it reflects well on them too.</p>
+          <div class="why"><b>Why it works</b> &mdash; a retweet from a large account is the fastest follower transfer on the platform.</div>
+        </article>
+
+        <article class="card">
+          <h3>Disagreement is a strategy</h3>
+          <p class="lead">Contrarian takes get you quoted, and the quote-tweeter's haters become your followers. One caveat straight from X's head of product: pure ragebait just got nerfed, so disagree with substance:</p>
+          <a class="xpost" href="https://x.com/nikitabier/status/2089763962330230803" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-nikita.jpg" alt="">
+              <div class="xwho"><span class="xname">Nikita Bier</span><span class="xhandle">@nikitabier &middot; Aug 18</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">The largest contributor of seeing ragebait was the reply predictor and we were aware that angry replies were causing people to see more of that content.
+
+So last month, we gave the reply predictor a 15x boost if it&rsquo;s a friend&rsquo;s post&mdash;and it reduced ragebait by order of magnitude.</p>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>66</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>37</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>722</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>35K</span>
+            </div>
+          </a>
+        </article>
+
+      </div>
+      <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="dots" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============ V · IN PERSON ============ -->
+  <section class="panel" id="p-5">
+    <div class="panel-head">
+      <div class="chapno">v &middot; In person</div>
+      <h2>Rooms convert <em>better than feeds</em></h2>
+      <p>People are at events every week, especially in SF, and almost nobody turns those rooms into followers.</p>
+    </div>
+    <div class="deck-shell">
+      <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="deck" tabindex="0" aria-label="In person, cards">
+
+        <article class="card">
+          <h3>Shoot what's genuinely interesting</h3>
+          <p class="lead">Photograph the coolest thing in the room, name the event, and post while you're still standing there. Event name, keyword, and a photo stack three boosts on one post:</p>
+          <a class="xpost" href="https://x.com/MozeTech/status/2086361458108252246" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-moze.jpg" alt="">
+              <div class="xwho"><span class="xname">Max Med</span><span class="xhandle">@MozeTech &middot; Aug 9</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">met the thanos of defcon, dude hooked up a flipper zero to this glove so now he can flick his fingers and hack your shit</p>
+            <div class="xmedia one"><div class="xm"><img loading="lazy" decoding="async" src="assets/ph-thanos.jpg" alt=""></div></div>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>4</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>43</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>2K</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/><path d="M18 6l1 1 2-2.5"/></svg></div>
+          <h3>Have them add you, not the reverse</h3>
+          <p>Ask everyone you meet whether they're on X, then have them follow you on the spot. The direction matters: if you add them, they take you as a follower and forget you. A simple excuse covers it: you don't have the app on your phone, so they should add you.</p>
+          <div class="why"><b>Why it works</b> &mdash; people flake. The person who taps follow is the one who committed.</div>
+        </article>
+
+      </div>
+      <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="dots" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============ VI · SHARING YOUR WORK ============ -->
+  <section class="panel" id="p-6">
+    <div class="panel-head">
+      <div class="chapno">vi &middot; Sharing your work</div>
+      <h2>Ship constantly, <em>share everything</em></h2>
+      <p>Everyone is doing interesting work they never share, and the world wants to see it. If it isn't confidential, it goes out.</p>
+    </div>
+    <div class="deck-shell">
+      <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="deck" tabindex="0" aria-label="Sharing your work, cards">
+
+        <article class="card">
+          <h3>Build small apps that match your identity</h3>
+          <p class="lead">Little playable things tied to what you do give people a reason to follow you for the next one. A tiny combat test, 25K views:</p>
+          <a class="xpost" href="https://x.com/SargantanaGames/status/2087583747105304896" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-sarg.jpg" alt="">
+              <div class="xwho"><span class="xname">VPetlings</span><span class="xhandle">@SargantanaGames &middot; Aug 12</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">A little combat test for our desktop pet game &#9876;&#65039;</p>
+            <div class="xmedia one"><div class="xm"><img loading="lazy" decoding="async" src="assets/vid-sarg.jpg" alt=""><div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div></div></div>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>7</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>76</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>809</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>25K</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="card">
+          <h3>Let Claude produce the launch video</h3>
+          <p class="lead">You don't need to edit anything. Tell Claude to use Remotion and post what it renders. This whole trailer was generated with one prompt, zero hand editing:</p>
+          <div class="vidwrap"><video controls playsinline preload="metadata" src="assets/forkcast-trailer.mp4"></video></div>
+          <div class="vidcap">the Forkcast trailer, Claude + Remotion</div>
+        </article>
+
+        <article class="card">
+          <h3>Screen record as you work</h3>
+          <p class="lead">You already have the footage of your own work; most people just never hit record. Raw process content, bugs included, reads as authentic:</p>
+          <a class="xpost" href="https://x.com/MozeTech/status/2080813530203508948" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-moze.jpg" alt="">
+              <div class="xwho"><span class="xname">Max Med</span><span class="xhandle">@MozeTech &middot; Jul 25</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">Got gemini 3.6 flash to build a 3D model of plague inc the game
+
+three.js, per-country SEIR model, raycast vertex sculpting on the virus mesh itself, procedural web audio, DEFCON tracker, photoreal globe with real country borders. compiled clean first try&hellip; <span class="xmore">Show more</span></p>
+            <div class="xmedia one"><div class="xm"><img loading="lazy" decoding="async" src="assets/vid-plague.jpg" alt=""><div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div></div></div>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>1</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>3</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>299</span>
+            </div>
+          </a>
+        </article>
+
+      </div>
+      <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="dots" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Copy-paste prompts and Claude skills for launch content are coming later.</p>
+  </footer>
+
+</div>
+
+<script>
+  const syncFns = [];
+
+  // ---------- carousels ----------
+  document.querySelectorAll('.deck-shell').forEach(shell => {
+    const deck = shell.querySelector('.deck');
+    const cards = deck.querySelectorAll('.card');
+    const dotsBox = shell.querySelector('.dots');
+    const prev = shell.querySelector('.prev');
+    const next = shell.querySelector('.next');
+
+    cards.forEach(() => {
+      const d = document.createElement('span');
+      d.className = 'd';
+      dotsBox.appendChild(d);
+    });
+    const dots = dotsBox.querySelectorAll('.d');
+
+    function activeIndex() {
+      const rect = deck.getBoundingClientRect();
+      const center = rect.left + rect.width / 2;
+      let best = 0, bestDist = Infinity;
+      cards.forEach((c, i) => {
+        const r = c.getBoundingClientRect();
+        const dist = Math.abs(r.left + r.width / 2 - center);
+        if (dist < bestDist) { bestDist = dist; best = i; }
+      });
+      return best;
+    }
+
+    function sync() {
+      const i = activeIndex();
+      dots.forEach((d, j) => d.classList.toggle('on', j === i));
+      cards.forEach((c, j) => c.classList.toggle('off', j !== i));
+      prev.disabled = i <= 0;
+      next.disabled = i >= cards.length - 1;
+    }
+
+    function goTo(i) {
+      i = Math.max(0, Math.min(cards.length - 1, i));
+      const c = cards[i];
+      deck.scrollTo({ left: c.offsetLeft - (deck.clientWidth - c.offsetWidth) / 2, behavior: 'smooth' });
+    }
+
+    prev.addEventListener('click', () => goTo(activeIndex() - 1));
+    next.addEventListener('click', () => goTo(activeIndex() + 1));
+    deck.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+
+    deck.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); goTo(activeIndex() + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(activeIndex() - 1); }
+    });
+
+    let down = false, startX = 0, startScroll = 0, moved = false;
+    deck.addEventListener('mousedown', e => {
+      down = true; moved = false;
+      startX = e.pageX;
+      startScroll = deck.scrollLeft;
+    });
+    window.addEventListener('mousemove', e => {
+      if (!down) return;
+      const dx = e.pageX - startX;
+      if (Math.abs(dx) > 5 && !moved) { moved = true; deck.classList.add('dragging'); }
+      if (moved) deck.scrollLeft = startScroll - dx;
+    });
+    window.addEventListener('mouseup', () => {
+      if (!down) return;
+      down = false;
+      if (moved) {
+        deck.classList.remove('dragging');
+        goTo(activeIndex());
+      }
+    });
+
+    syncFns.push(sync);
+    sync();
+  });
+  window.addEventListener('resize', () => syncFns.forEach(f => f()));
+</script>
+
+</body>
+</html>
