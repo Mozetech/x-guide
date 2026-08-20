@@ -2,20 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Growing on X</title>
+<title>X Daily — KPIs and guidance</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Notes on audience growth on X: six sections covering ranking signals, timing, replies, borrowed audiences, offline gatherings and publication, each documented with real posts.">
+<meta name="description" content="Five daily KPIs and practical guidance for building an audience on X through consistent posts, replies, DMs and deliberate relationships.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Growing on X">
-<meta property="og:description" content="Notes on audience growth on X: six sections covering ranking signals, timing, replies, borrowed audiences, offline gatherings and publication, each documented with real posts.">
+<meta property="og:title" content="X Daily — KPIs and guidance">
+<meta property="og:description" content="Five daily KPIs and practical guidance for building an audience on X through consistent posts, replies, DMs and deliberate relationships.">
 <meta property="og:image" content="https://mozetech.github.io/x-guide/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Growing on X">
-<meta name="twitter:description" content="Notes on audience growth on X: six sections covering ranking signals, timing, replies, borrowed audiences, offline gatherings and publication, each documented with real posts.">
+<meta name="twitter:title" content="X Daily — KPIs and guidance">
+<meta name="twitter:description" content="Five daily KPIs and practical guidance for building an audience on X through consistent posts, replies, DMs and deliberate relationships.">
 <meta name="twitter:image" content="https://mozetech.github.io/x-guide/assets/og.jpg">
+<link rel="icon" href="assets/og.jpg" type="image/jpeg">
 <link rel="preload" href="assets/fraunces-roman.woff2" as="font" type="font/woff2" crossorigin>
-</head>
-<body>
 <style>
   @font-face {
     font-family: 'Fraunces';
@@ -436,7 +435,346 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   }
+
+
+  /* ---------- sequence ---------- */
+  html { scroll-behavior: smooth; }
+
+  .sequence-section,
+  .daily-section,
+  .discipline {
+    margin-bottom: clamp(70px, 10vh, 110px);
+    scroll-margin-top: 24px;
+  }
+
+  .sequence-section { margin-bottom: clamp(38px, 5vh, 54px); }
+  .sequence-section .panel-head { margin-bottom: 18px; }
+
+  .sequence-copy {
+    max-width: 790px;
+    margin-inline: auto;
+  }
+  .sequence-copy p,
+  .tldr-section p,
+  .kpi-intent p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .sequence-copy.lead-copy { margin-bottom: 20px; }
+  .sequence-copy.tail-copy { margin-top: 22px; }
+
+  .sequence-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    max-width: 960px;
+    margin: 0 auto;
+    counter-reset: sequence;
+  }
+  .sequence-step {
+    min-height: 142px;
+    padding: 17px 18px;
+    background: var(--glass);
+    border: 1.5px solid var(--edge);
+    border-radius: 21px;
+    box-shadow: var(--shadow-soft), inset 0 1.5px 0 var(--edge);
+  }
+  .step-no {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin-bottom: 14px;
+    background: var(--accent);
+    color: var(--page);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+  }
+  .sequence-step h3,
+  .gate-item h3,
+  .kpi-copy h3,
+  .discipline-card h3 {
+    font-family: var(--serif);
+    font-weight: 560;
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 40;
+  }
+  .sequence-step h3 { font-size: 18px; margin-bottom: 6px; }
+  .sequence-step p {
+    font-size: 12.75px;
+    line-height: 1.48;
+    color: var(--ink-soft);
+  }
+
+  .gate-label {
+    margin: 14px 0 8px;
+    text-align: center;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+  .gate-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .gate-item {
+    padding: 12px 16px;
+    border: 1px dashed var(--ink-faint);
+    border-radius: 17px;
+    color: var(--ink-faint);
+  }
+  .gate-item h3 { font-size: 16px; margin-bottom: 3px; }
+  .gate-item p { font-size: 12.5px; line-height: 1.45; }
+
+  .tldr-section {
+    max-width: 790px;
+    margin: 0 auto clamp(58px, 8vh, 82px);
+    padding: 20px 0;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 22px;
+    align-items: start;
+    scroll-margin-top: 24px;
+  }
+  .tldr-label {
+    color: var(--accent);
+    font-family: var(--serif);
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+  .tldr-section p strong {
+    color: var(--ink);
+    font-weight: 650;
+  }
+
+  /* ---------- daily KPI floor ---------- */
+  .daily-section .panel-head { margin-bottom: 18px; }
+  .kpi-intent {
+    max-width: 790px;
+    margin: 0 auto 28px;
+  }
+  .kpi-list { display: grid; gap: 16px; }
+  .kpi-row {
+    overflow: hidden;
+    background: var(--glass);
+    border: 1.5px solid var(--edge);
+    border-radius: 28px;
+    box-shadow: var(--shadow-soft), inset 0 1.5px 0 var(--edge);
+  }
+  .kpi-main {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: clamp(18px, 3vw, 32px);
+    padding: clamp(22px, 3.6vw, 38px);
+  }
+  .kpi-count {
+    width: 68px;
+    height: 68px;
+    border-radius: 21px;
+    display: grid;
+    place-items: center;
+    align-self: start;
+    background: var(--accent);
+    color: var(--page);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    box-shadow: inset 0 1.5px 0 var(--edge);
+  }
+  .kpi-copy h3 {
+    font-size: clamp(23px, 3vw, 29px);
+    line-height: 1.15;
+    margin-bottom: 13px;
+  }
+  .kpi-form {
+    display: grid;
+    gap: 7px;
+    max-width: 820px;
+  }
+  .kpi-form p,
+  .kpi-why {
+    font-size: 14.5px;
+    line-height: 1.62;
+    color: var(--ink-soft);
+  }
+  .kpi-form strong,
+  .kpi-why b {
+    color: var(--ink);
+    font-weight: 650;
+  }
+  .kpi-why {
+    margin-top: 14px;
+    padding-top: 13px;
+    border-top: 1px solid var(--hairline);
+  }
+  .mechanism-link {
+    display: inline-block;
+    margin-top: 13px;
+    color: var(--accent);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13.5px;
+    text-underline-offset: 3px;
+  }
+
+  .kpi-example { border-top: 1px solid var(--hairline); }
+  .kpi-example summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 15px clamp(22px, 3.6vw, 38px);
+    cursor: pointer;
+    color: var(--accent);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+  }
+  .kpi-example summary::-webkit-details-marker { display: none; }
+  .kpi-example summary::after {
+    content: "+";
+    width: 27px;
+    height: 27px;
+    border: 1px solid var(--hairline);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    flex: none;
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 17px;
+    line-height: 1;
+  }
+  .kpi-example[open] summary::after { content: "−"; }
+  .kpi-example summary:hover { background: var(--glass); }
+  .kpi-example summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -4px;
+    border-radius: 12px;
+  }
+  .example-body {
+    padding: 4px clamp(22px, 3.6vw, 38px) clamp(24px, 3.6vw, 38px);
+  }
+  .example-body > .xpost,
+  .example-body > .dm { max-width: 430px; }
+  .example-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 430px));
+    gap: 18px;
+    align-items: start;
+  }
+
+  /* ---------- guidance additions ---------- */
+  .guidelines-heading {
+    margin: 0 0 clamp(44px, 7vh, 68px);
+    scroll-margin-top: 24px;
+  }
+  .guidelines-heading .panel-head { margin-bottom: 0; }
+  .card-kicker {
+    color: var(--accent);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12.5px;
+  }
+  .card .xtext {
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .card .xreplyctx {
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    margin-bottom: 3px;
+  }
+  .panel,
+  .panel[id] { scroll-margin-top: 24px; }
+
+  /* ---------- discipline ---------- */
+  .discipline-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .discipline-card {
+    min-height: 220px;
+    padding: clamp(24px, 3.5vw, 38px);
+    background: var(--glass);
+    border: 1.5px solid var(--edge);
+    border-radius: 28px;
+    box-shadow: var(--shadow-soft), inset 0 1.5px 0 var(--edge);
+  }
+  .discipline-card h3 {
+    font-size: clamp(21px, 2.8vw, 26px);
+    margin-bottom: 12px;
+  }
+  .discipline-card p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 820px) {
+    .sequence-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .example-grid { grid-template-columns: minmax(0, 430px); }
+  }
+
+  @media (max-width: 640px) {
+    .mast .note { white-space: normal; }
+    .gate-row,
+    .discipline-grid { grid-template-columns: 1fr; }
+    .sequence-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .sequence-step {
+      min-height: 156px;
+      padding: 14px;
+    }
+    .sequence-step h3 { font-size: 16px; }
+    .sequence-step p { font-size: 12px; }
+    .step-no {
+      width: 27px;
+      height: 27px;
+      margin-bottom: 12px;
+      font-size: 12px;
+    }
+    .tldr-section {
+      grid-template-columns: 1fr;
+      gap: 7px;
+      padding: 18px 0;
+    }
+    .kpi-main { grid-template-columns: 1fr; }
+    .kpi-count {
+      width: auto;
+      height: auto;
+      min-width: 60px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      justify-self: start;
+    }
+    .example-body > .xpost,
+    .example-body > .dm,
+    .example-grid { max-width: 100%; }
+  }
+
 </style>
+</head>
+<body>
 
 <div class="sky" aria-hidden="true">
   <div class="blob b1"></div>
@@ -447,25 +785,132 @@
 <div class="wrap">
 
   <header class="mast">
-    <h1>Notes on <em>audience growth on X</em></h1>
-    <span class="note">six sections &middot; swipe each row horizontally</span>
+    <h1>X <em>Daily</em></h1>
+    <span class="note">five daily KPIs for growing on X</span>
   </header>
 
-  <!-- ============ I · THE BASICS ============ -->
-  <section class="panel" id="p-1">
-    <div class="panel-head">
-      <div class="chapno">i &middot; Content and ranking signals</div>
-      <h2>Engagement signals and <em>follower conversion</em></h2>
-      <p>The ranking system weights interactions unequally, and the material that accumulates followers differs from the material that accumulates likes. This section concerns both.</p>
-    </div>
-    <div class="deck-shell">
-      <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="deck" tabindex="0" aria-label="The basics, cards">
+  <main>
+    <section class="sequence-section" id="sequence" aria-labelledby="sequence-title">
+      <div class="panel-head">
+        <div class="chapno">Before the KPIs</div>
+        <h2 id="sequence-title">Set the <em>foundations</em></h2>
+      </div>
 
-        <article class="card">
-          <h3>Content with instrumental value</h3>
-          <p class="lead">Material that a reader can reuse, a prompt, a workflow, a technique, converts viewers into followers at a higher rate than material that is only entertaining, since the reader has reason to expect comparable output later. The post below publishes its prompt in full:</p>
-          <a class="xpost" href="https://x.com/jumperz/status/2077884505612750861" target="_blank" rel="noopener">
+      <div class="sequence-copy lead-copy">
+        <p>Each person needs four things in place: a Universal Thesis, an SF Narrative downstream of it, a Twitter Persona downstream of that (bio, pfp and so on), and a Particulars List. Once those four are sorted, Milestones and a Hitlist get systemised on top.</p>
+      </div>
+
+      <ol class="sequence-list">
+        <li class="sequence-step">
+          <span class="step-no">1</span>
+          <h3>Universal Thesis</h3>
+          <p>The single claim everything you do tries to prove or test.</p>
+        </li>
+        <li class="sequence-step">
+          <span class="step-no">2</span>
+          <h3>SF Narrative</h3>
+          <p>Downstream of the thesis.</p>
+        </li>
+        <li class="sequence-step">
+          <span class="step-no">3</span>
+          <h3>Twitter Persona</h3>
+          <p>Downstream of the narrative: bio, pfp and the rest.</p>
+        </li>
+        <li class="sequence-step">
+          <span class="step-no">4</span>
+          <h3>Particulars List</h3>
+          <p>The growing repository you draw on.</p>
+        </li>
+      </ol>
+
+      <p class="gate-label">Systemised once the four above are in place</p>
+      <div class="gate-row">
+        <div class="gate-item">
+          <h3>Milestones</h3>
+          <p>A record of the stages you have moved through and what comes next.</p>
+        </div>
+        <div class="gate-item">
+          <h3>Hitlist</h3>
+          <p>The people you want to reach and build relationships with.</p>
+        </div>
+      </div>
+
+      <div class="sequence-copy tail-copy">
+        <p>None of that is settled yet, so these KPIs are not tailored to any individual. We will settle each profile in person over the next few days, rather than make abstract assumptions about people. Those planning to raise soon will go first. What stands in the meantime are KPIs of minimal engagement.</p>
+      </div>
+    </section>
+
+    <section class="tldr-section" aria-labelledby="tldr-title">
+      <h2 class="tldr-label" id="tldr-title">TL;DR</h2>
+      <p><strong>The daily order.</strong> Begin with one quote post in the morning: a genuine disagreement or useful follow-up. Send three specific DMs—one warm, one peer-level and one upward. Leave five replies: three on recent, quiet posts and two early in busy threads; then follow three of the smaller accounts you replied to. Publish two original posts later: one useful and one open-ended, with one in the afternoon and one in the evening.</p>
+    </section>
+
+    <section class="daily-section" id="daily-kpis" aria-labelledby="daily-title">
+      <div class="panel-head">
+        <div class="chapno">Every day · monitored</div>
+        <h2 id="daily-title">Daily <em>KPIs</em></h2>
+      </div>
+
+      <div class="kpi-intent">
+        <p>Their intention is habituation: to make Twitter people out of us. They are to be completed every single day, and they will be monitored. We are now residents of Silicon Valley; Twitter is the platform to engage in here, and the point of these KPIs is to enable us to continuously think in terms of Twitter clout.</p>
+      </div>
+
+      <div class="kpi-list">
+        <article class="kpi-row" id="quote-post">
+          <div class="kpi-main">
+            <div class="kpi-count">One</div>
+            <div class="kpi-copy">
+              <h3>Quote post</h3>
+              <div class="kpi-form">
+                <p>Quote-tweet something you genuinely disagree with and say why in your own words. Or have something to follow up with.</p>
+                <p>Try to also '@' someone with 500 to 3,000 followers if the point you are making would be relevant to them.</p>
+              </div>
+              <p class="kpi-why"><b>When and why.</b> Do this in the morning while you scroll. Scroll actively. Disagreement here is ideal coz you'll likely get a reply.</p>
+              <a class="mechanism-link" href="#timing">How it works: Timing ↓</a>
+            </div>
+          </div>
+          <details class="kpi-example">
+            <summary>See the real post</summary>
+            <div class="example-body">
+              <a class="xpost" href="https://x.com/nikitabier/status/2089763962330230803" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-nikita.jpg" alt="">
+              <div class="xwho"><span class="xname">Nikita Bier</span><span class="xhandle">@nikitabier &middot; Aug 18</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">The largest contributor of seeing ragebait was the reply predictor and we were aware that angry replies were causing people to see more of that content.
+
+So last month, we gave the reply predictor a 15x boost if it&rsquo;s a friend&rsquo;s post&mdash;and it reduced ragebait by order of magnitude.</p>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>66</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>37</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>722</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>35K</span>
+            </div>
+          </a>
+            </div>
+          </details>
+        </article>
+
+        <article class="kpi-row" id="original-posts">
+          <div class="kpi-main">
+            <div class="kpi-count">Two</div>
+            <div class="kpi-copy">
+              <h3>Original posts</h3>
+              <div class="kpi-form">
+                <p>Two posts, different in kind.</p>
+                <p><strong>The useful one.</strong> Something they can actually use: a method, a template, a checklist, a screenshot of how you do it.</p>
+                <p><strong>The open one.</strong> Short, plain text, built to be replied to: a question, a claim someone can push against, something left unfinished.</p>
+                <p>Try to put images/videos.</p>
+              </div>
+              <p class="kpi-why"><b>When and why.</b> One in the afternoon, one in the evening. Don't do more than two or three a day, as your own posts compete for space in people's feeds.</p>
+              <a class="mechanism-link" href="#your-work">How it works: Your work ↓</a>
+            </div>
+          </div>
+          <details class="kpi-example">
+            <summary>See the useful form</summary>
+            <div class="example-body">
+              <a class="xpost" href="https://x.com/jumperz/status/2077884505612750861" target="_blank" rel="noopener">
             <div class="xhead">
               <img loading="lazy" decoding="async" class="xav" src="assets/av-jump.jpg" alt="">
               <div class="xwho"><span class="xname">JUMPERZ</span><span class="xhandle">@jumperz &middot; Jul 16</span></div>
@@ -488,184 +933,29 @@ andonorris official website&hellip; <span class="xmore">Show more</span></p>
               <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>9.9K</span>
             </div>
           </a>
+            </div>
+          </details>
         </article>
 
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg></div>
-          <h3>Media attachment and initial reach</h3>
-          <p>Posts carrying an image or a video receive wider initial distribution than text alone. Where a photograph or clip can carry the content, including one is the higher-yield option.</p>
-          <div class="why"><b>Mechanism.</b> Media posts receive additional feed placement before any engagement has accrued.</div>
-        </article>
-
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg></div>
-          <h3>Replies as a distribution signal</h3>
-          <p>Each reply extends a post's circulation. Posts phrased to require an answer therefore travel further than declarative statements, which give the reader no occasion to respond.</p>
-          <div class="why"><b>Mechanism.</b> Replies outweigh reposts, bookmarks and likes in the ranking, and replies on a post from an account the reader follows now carry a fifteenfold weighting.</div>
-        </article>
-
-      </div>
-      <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-      <div class="dots" aria-hidden="true"></div>
-    </div>
-  </section>
-
-  <!-- ============ II · RIDING TRENDS ============ -->
-  <section class="panel" id="p-2">
-    <div class="panel-head">
-      <div class="chapno">ii &middot; Timing and search behavior</div>
-      <h2>Entering <em>existing attention flows</em></h2>
-      <p>Attention concentrates around events and terminology already in circulation. Material that enters one of these flows inherits an audience assembled by other means, provided it arrives while the flow persists.</p>
-    </div>
-    <div class="deck-shell">
-      <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="deck" tabindex="0" aria-label="Riding trends, cards">
-
-        <article class="card">
-          <h3>Posting from a live event</h3>
-          <p class="lead">Naming an event while it is underway places a post in front of a community already searching that term, which supplies distribution independent of the author's following. The example below records an incident on site:</p>
-          <a class="xpost" href="https://x.com/MozeTech/status/2086269933143658603" target="_blank" rel="noopener">
-            <div class="xhead">
-              <img loading="lazy" decoding="async" class="xav" src="assets/av-moze.jpg" alt="">
-              <div class="xwho"><span class="xname">Max Med</span><span class="xhandle">@MozeTech &middot; Aug 9</span></div>
-              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <article class="kpi-row" id="direct-messages">
+          <div class="kpi-main">
+            <div class="kpi-count">Three</div>
+            <div class="kpi-copy">
+              <h3>DMs</h3>
+              <div class="kpi-form">
+                <p><strong>Warm.</strong> Someone you already interacted with today.</p>
+                <p><strong>Level.</strong> A peer at roughly your size.</p>
+                <p><strong>Upward.</strong> Someone clearly above you.</p>
+                <p>In all three, reference something specific they made or wrote.</p>
+              </div>
+              <p class="kpi-why"><b>Why.</b> Generic greetings get ignored. Engage sincerely.</p>
+              <a class="mechanism-link" href="#other-people">How it works: Other people ↓</a>
             </div>
-            <p class="xtext">Someone fr hacked the vending machine at defcon &#128557;</p>
-            <div class="xmedia two">
-              <div class="xm"><img loading="lazy" decoding="async" src="assets/vid-moze.jpg" alt=""><div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div></div>
-              <div class="xm"><img loading="lazy" decoding="async" src="assets/ph-moze.jpg" alt=""></div>
-            </div>
-            <div class="xstats">
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>4</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>5</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>118</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>12.5K</span>
-            </div>
-          </a>
-        </article>
-
-        <article class="card">
-          <h3>Early use of newly released tools</h3>
-          <p class="lead">A release generates a concentrated search wave lasting a few days, during which comparatively little material exists to satisfy it. The example below documents an undemonstrated use of a model published the same week:</p>
-          <a class="xpost" href="https://x.com/victormustar/status/2089310616854892818" target="_blank" rel="noopener">
-            <div class="xhead">
-              <img loading="lazy" decoding="async" class="xav" src="assets/av-victor.jpg" alt="">
-              <div class="xwho"><span class="xname">Victor M</span><span class="xhandle">@victormustar &middot; Aug 17</span></div>
-              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </div>
-            <p class="xtext">Cool MiniMax-H3 use case unlocked for game sprites creation, here's the workflow:
-
-1. one character design still, on a flat magenta background
-2. one 5s H3 clip per move (walk, jump, punch, kick, block...)
-3. cut each clip down to its pose extremes
-4. key out the magenta, pack into a sprite atlas</p>
-            <div class="xmedia one"><div class="xm"><img loading="lazy" decoding="async" src="assets/vid-victor.jpg" alt=""><div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div></div></div>
-            <div class="xstats">
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>59</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>134</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>1.7K</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>188K</span>
-            </div>
-          </a>
-        </article>
-
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
-          <h3>Lexical alignment with current discourse</h3>
-          <p>Retrieval depends on wording. A post describing a phenomenon in terms other than those presently in circulation will not surface for the readers searching that phenomenon, however closely its content bears on the subject.</p>
-          <div class="why"><b>Mechanism.</b> The ranking system matches post text against active queries, so wording determines whether a post is retrievable at all.</div>
-        </article>
-
-        <article class="card">
-          <h3>Documented scarcity and reply volume</h3>
-          <p class="lead">A photograph of a small closed gathering prompts requests for access, and those requests enter the ranking as replies, which extends circulation further. The example below drew seventy-one:</p>
-          <a class="xpost" href="https://x.com/luci_holland/status/2083310043672522840" target="_blank" rel="noopener">
-            <div class="xhead">
-              <img loading="lazy" decoding="async" class="xav" src="assets/av-luci.jpg" alt="">
-              <div class="xwho"><span class="xname">Luci Holland</span><span class="xhandle">@luci_holland &middot; Jul 31</span></div>
-              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </div>
-            <p class="xtext">we&rsquo;re hosting a rooftop soir&eacute;e in SF
-
-for founders, operators, and designers
-
-dm or comment for the invite</p>
-            <div class="xmedia one"><div class="xm"><img loading="lazy" decoding="async" src="assets/ph-luci.jpg" alt=""></div></div>
-            <div class="xstats">
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>71</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>2</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>190</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>32K</span>
-            </div>
-          </a>
-        </article>
-
-      </div>
-      <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-      <div class="dots" aria-hidden="true"></div>
-    </div>
-  </section>
-
-  <!-- ============ III · STARTING FROM ZERO ============ -->
-  <section class="panel" id="p-3">
-    <div class="panel-head">
-      <div class="chapno">iii &middot; Accounts without an audience</div>
-      <h2>Growth in the <em>absence of distribution</em></h2>
-      <p>A new account receives minimal circulation, so material published to its own timeline reaches almost no one and attracts no engagement to compound. Under this constraint, participation in established threads is the more productive channel.</p>
-    </div>
-    <div class="deck-shell">
-      <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="deck" tabindex="0" aria-label="Starting from zero, cards">
-
-        <article class="card">
-          <h3>Reply placement on low-engagement posts</h3>
-          <p class="lead">On a post carrying few responses, a single reply constitutes a substantial share of the visible conversation and is likely to be read and answered by the author. The post below stands at eleven likes:</p>
-          <a class="xpost" href="https://x.com/kelvinbuildss/status/2076776457066467423" target="_blank" rel="noopener">
-            <div class="xhead">
-              <img loading="lazy" decoding="async" class="xav" src="assets/av-kelvin.jpg" alt="">
-              <div class="xwho"><span class="xname">Kelvin Celso</span><span class="xhandle">@kelvinbuildss &middot; Jul 13</span></div>
-              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </div>
-            <p class="xtext">tried copying a famous app.
-
-spent money promoting it, and nobody stayed.
-
-the mistake: I built in a saturated niche without my own angle.
-
-next time: validate the market first, then build.</p>
-            <div class="xstats">
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>9</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>0</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>11</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>882</span>
-            </div>
-          </a>
-        </article>
-
-        <article class="card">
-          <h3>Reply differentiation in crowded threads</h3>
-          <p class="lead">Replies expressing agreement accumulate unread beneath large posts. A reply carrying an original observation, or the question the thread has left unanswered, accrues engagement of its own and acquires independent visibility. The reply below received five hundred and ninety-five likes:</p>
-          <a class="xpost" href="https://x.com/tszzl/status/2088559477809438737" target="_blank" rel="noopener">
-            <div class="xhead">
-              <img loading="lazy" decoding="async" class="xav" src="assets/av-roon.jpg" alt="">
-              <div class="xwho"><span class="xname">roon</span><span class="xhandle">@tszzl &middot; Aug 15</span></div>
-              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </div>
-            <p class="xreplyctx">Replying to <span class="xblue">@andrewho03</span></p>
-            <p class="xtext">did you forget to negate the sign in your reward function or something?</p>
-            <div class="xstats">
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>17</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>1</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>595</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>30K</span>
-            </div>
-          </a>
-        </article>
-
-        <article class="card">
-          <h3>Direct messages as an outreach channel</h3>
-          <p class="lead">A direct message reaches its recipient without algorithmic mediation, and messages opening on a specific detail of the recipient's work receive markedly higher response rates than general approaches. The exchange below is with an account of thirty thousand followers:</p>
-          <div class="dm">
+          </div>
+          <details class="kpi-example">
+            <summary>See the real exchange</summary>
+            <div class="example-body">
+              <div class="dm">
             <div class="dm-head">
               <div class="dm-av">R</div>
               <div class="dm-who">
@@ -685,29 +975,241 @@ next time: validate the market first, then build.</p>
 - I write a good amount about technology through the lens of Christian theology</div>
             <div class="dm-meta left">just now</div>
           </div>
+            </div>
+          </details>
         </article>
 
+        <article class="kpi-row" id="replies">
+          <div class="kpi-main">
+            <div class="kpi-count">Five</div>
+            <div class="kpi-copy">
+              <h3>Replies</h3>
+              <div class="kpi-form">
+                <p><strong>Three on quiet posts.</strong> Few replies so far, recent, from accounts a bit bigger than you.</p>
+                <p><strong>Two on busy threads.</strong> Get in early, before the pile builds.</p>
+              </div>
+              <p class="kpi-why"><b>Why.</b> On a quiet post you are most of the conversation, so the author reads you and may reply. On a busy thread you are writing for the other readers, so only something new gets seen.</p>
+              <a class="mechanism-link" href="#other-people">How it works: Other people ↓</a>
+            </div>
+          </div>
+          <details class="kpi-example">
+            <summary>See both reply patterns</summary>
+            <div class="example-body example-grid">
+              <a class="xpost" href="https://x.com/kelvinbuildss/status/2076776457066467423" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-kelvin.jpg" alt="">
+              <div class="xwho"><span class="xname">Kelvin Celso</span><span class="xhandle">@kelvinbuildss &middot; Jul 13</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">tried copying a famous app.
+
+spent money promoting it, and nobody stayed.
+
+the mistake: I built in a saturated niche without my own angle.
+
+next time: validate the market first, then build.</p>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>9</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>0</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>11</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>882</span>
+            </div>
+          </a>
+              <a class="xpost" href="https://x.com/tszzl/status/2088559477809438737" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-roon.jpg" alt="">
+              <div class="xwho"><span class="xname">roon</span><span class="xhandle">@tszzl &middot; Aug 15</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xreplyctx">Replying to <span class="xblue">@andrewho03</span></p>
+            <p class="xtext">did you forget to negate the sign in your reward function or something?</p>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>17</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>1</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>595</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>30K</span>
+            </div>
+          </a>
+            </div>
+          </details>
+        </article>
+
+        <article class="kpi-row" id="deliberate-follows">
+          <div class="kpi-main">
+            <div class="kpi-count">Three</div>
+            <div class="kpi-copy">
+              <h3>Deliberate follows</h3>
+              <div class="kpi-form">
+                <p>Follow the small accounts you replied to today.</p>
+              </div>
+              <p class="kpi-why"><b>Why.</b> This is what turns a reply into a mutual. Once someone follows you back, X weights their predicted likelihood of replying to one of your original posts at 20 instead of 5 — roughly 4×. It does not boost your replies or reposts.</p>
+              <a class="mechanism-link" href="#other-people">How it works: Other people ↓</a>
+            </div>
+          </div>
+        </article>
       </div>
-      <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-      <div class="dots" aria-hidden="true"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============ IV · BORROWING AUDIENCES ============ -->
-  <section class="panel" id="p-4">
-    <div class="panel-head">
-      <div class="chapno">iv &middot; Access to established audiences</div>
-      <h2>Transfer from <em>established accounts</em></h2>
-      <p>A repost from an account with a large following transfers a portion of that audience directly, and does so faster than any amount of unassisted publication. The methods below concern how such attention is obtained, including the adversarial case.</p>
-    </div>
-    <div class="deck-shell">
-      <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="deck" tabindex="0" aria-label="Borrowing audiences, cards">
+    <section class="guidelines-heading" id="general-guidelines" aria-labelledby="general-guidelines-title">
+      <div class="panel-head">
+        <h2 id="general-guidelines-title">General <em>guidelines</em></h2>
+      </div>
+    </section>
 
-        <article class="card">
-          <h3>Documented collaboration over proximity</h3>
-          <p class="lead">A photograph establishing proximity to a notable person conveys no information and gives their audience no reason to respond. A record of work performed together conveys both. The example below documents a modified conference badge and credits the collaborator:</p>
-          <a class="xpost" href="https://x.com/ivoinetech/status/2086156143349612782" target="_blank" rel="noopener">
+    <section class="panel" id="timing">
+      <div class="panel-head">
+        <div class="chapno">i · Timing</div>
+        <h2>Post into <em>attention that already exists</em></h2>
+        <p>Use live attention, launch windows and the words people are already searching for. Keep drafts ready so the moment does not depend on spontaneity.</p>
+      </div>
+      <div class="deck-shell">
+        <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="deck" tabindex="0" aria-label="Timing guidance, cards">
+          <article class="card" data-guidance-entry="1">
+            <span class="card-kicker">Live window</span>
+            <h3>Post while the event is happening</h3>
+            <p class="lead">During a conference, launch or announcement, attention piles onto a few search terms. Post inside that window. Tie it back to your own subject rather than just reporting.</p>
+            <a class="xpost" href="https://x.com/MozeTech/status/2086269933143658603" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-moze.jpg" alt="">
+              <div class="xwho"><span class="xname">Max Med</span><span class="xhandle">@MozeTech &middot; Aug 9</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">Someone fr hacked the vending machine at defcon &#128557;</p>
+            <div class="xmedia two">
+              <div class="xm"><img loading="lazy" decoding="async" src="assets/vid-moze.jpg" alt=""><div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div></div>
+              <div class="xm"><img loading="lazy" decoding="async" src="assets/ph-moze.jpg" alt=""></div>
+            </div>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>4</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>5</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>118</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>12.5K</span>
+            </div>
+          </a>
+            <div class="why"><b>Why.</b> You arrive in front of people who are already looking.</div>
+          </article>
+          <article class="card" data-guidance-entry="2">
+            <span class="card-kicker">Launch window</span>
+            <h3>Post about the new tool within days</h3>
+            <p class="lead">When a new tool or model drops, interest is high and little good material exists. Get in early with something non-obvious. A week later it is saturated.</p>
+            <a class="xpost" href="https://x.com/victormustar/status/2089310616854892818" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-victor.jpg" alt="">
+              <div class="xwho"><span class="xname">Victor M</span><span class="xhandle">@victormustar &middot; Aug 17</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">Cool MiniMax-H3 use case unlocked for game sprites creation, here's the workflow:
+
+1. one character design still, on a flat magenta background
+2. one 5s H3 clip per move (walk, jump, punch, kick, block...)
+3. cut each clip down to its pose extremes
+4. key out the magenta, pack into a sprite atlas</p>
+            <div class="xmedia one"><div class="xm"><img loading="lazy" decoding="async" src="assets/vid-victor.jpg" alt=""><div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div></div></div>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>59</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>134</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>1.7K</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>188K</span>
+            </div>
+          </a>
+          </article>
+          <article class="card" data-guidance-entry="3">
+            <span class="card-kicker">Search language</span>
+            <h3>Use the words the conversation has settled on</h3>
+            <p>Whether people find you depends on the terms you use. If everyone calls something by a particular name, use that name.</p>
+            <div class="why"><b>Why.</b> The words in the post decide which searches it can enter.</div>
+          </article>
+          <article class="card" data-guidance-entry="4">
+            <span class="card-kicker">Daily practice</span>
+            <h3>Take inventory</h3>
+            <p>Keep a running repository of your takes on what you see in your space. The moment you have one, put it in drafts. When a window opens, you already have something to post.</p>
+            <div class="why"><b>Then.</b> Let the strongest takes grow into essays or projects.</div>
+          </article>
+        </div>
+        <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        <div class="dots" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="access">
+      <div class="panel-head">
+        <div class="chapno">ii · Access</div>
+        <h2>Turn <em>where you are</em> into material</h2>
+        <p>Use the places, rooms and details available to you as particulars that make a broader thesis concrete.</p>
+      </div>
+      <div class="deck-shell">
+        <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="deck" tabindex="0" aria-label="Access guidance, cards">
+          <article class="card" data-guidance-entry="5">
+            <span class="card-kicker">Scarcity</span>
+            <h3>Post when you get somewhere most people cannot</h3>
+            <p class="lead">Invites, closed gatherings, selective events, private rooms. Access is interesting in itself. Frame what you saw through your own subject.</p>
+            <a class="xpost" href="https://x.com/luci_holland/status/2083310043672522840" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-luci.jpg" alt="">
+              <div class="xwho"><span class="xname">Luci Holland</span><span class="xhandle">@luci_holland &middot; Jul 31</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">we&rsquo;re hosting a rooftop soir&eacute;e in SF
+
+for founders, operators, and designers
+
+dm or comment for the invite</p>
+            <div class="xmedia one"><div class="xm"><img loading="lazy" decoding="async" src="assets/ph-luci.jpg" alt=""></div></div>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>71</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>2</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>190</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>32K</span>
+            </div>
+          </a>
+          </article>
+          <article class="card" data-guidance-entry="6">
+            <span class="card-kicker">Live detail</span>
+            <h3>Photograph the strange thing and name the event</h3>
+            <p class="lead">Skip the standard shot everyone takes. Find the odd detail. Naming the event puts you into what people are searching for while it is live.</p>
+            <a class="xpost" href="https://x.com/MozeTech/status/2086361458108252246" target="_blank" rel="noopener">
+            <div class="xhead">
+              <img loading="lazy" decoding="async" class="xav" src="assets/av-moze.jpg" alt="">
+              <div class="xwho"><span class="xname">Max Med</span><span class="xhandle">@MozeTech &middot; Aug 9</span></div>
+              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="xtext">met the thanos of defcon, dude hooked up a flipper zero to this glove so now he can flick his fingers and hack your shit</p>
+            <div class="xmedia one"><div class="xm"><img loading="lazy" decoding="async" src="assets/ph-thanos.jpg" alt=""></div></div>
+            <div class="xstats">
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>4</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>43</span>
+              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>2K</span>
+            </div>
+          </a>
+          </article>
+          <article class="card" data-guidance-entry="7">
+            <span class="card-kicker">Daily practice</span>
+            <h3>Build your Particulars List</h3>
+            <p>Keep a growing repository of specific things in the world that help you make a point about your thesis. Move from the universal claim to the particular thing in front of you.</p>
+            <div class="why"><b>The test.</b> Make a real connection to what you are building, not a forced one.</div>
+          </article>
+        </div>
+        <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        <div class="dots" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="other-people">
+      <div class="panel-head">
+        <div class="chapno">iii · Other people</div>
+        <h2>Borrow audiences <em>you have not built</em></h2>
+        <p>Give collaborators, relevant accounts and people you meet a real reason to respond, repost or continue the relationship.</p>
+      </div>
+      <div class="deck-shell">
+        <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="deck" tabindex="0" aria-label="Other people guidance, cards">
+          <article class="card" data-guidance-entry="8">
+            <span class="card-kicker">Collaboration</span>
+            <h3>Post about working with someone, not standing near them</h3>
+            <p class="lead">If you actually collaborated, they have a reason to repost you because the post is about their work too.</p>
+            <a class="xpost" href="https://x.com/ivoinetech/status/2086156143349612782" target="_blank" rel="noopener">
             <div class="xhead">
               <img loading="lazy" decoding="async" class="xav" src="assets/av-ivoine.jpg" alt="">
               <div class="xwho"><span class="xname">Ivoine In SF</span><span class="xhandle">@ivoinetech &middot; Aug 8</span></div>
@@ -728,100 +1230,44 @@ next time: validate the market first, then build.</p>
               <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>82K</span>
             </div>
           </a>
-        </article>
-
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 10.5L21 3"/><path d="M16 3h5v5"/><path d="M19 13v5a3 3 0 01-3 3H6a3 3 0 01-3-3V8a3 3 0 013-3h5"/></svg></div>
-          <h3>Mention as a distribution mechanism</h3>
-          <p>A mention places the post in the notification stream of the account named. Where the content reflects favorably on that account, the mention also supplies an incentive to repost it to their own following, which is the outcome of consequence.</p>
-          <div class="why"><b>Mechanism.</b> A repost from a large account is the most direct transfer of followers available on the platform.</div>
-        </article>
-
-        <article class="card">
-          <h3>Disagreement and adversarial circulation</h3>
-          <p class="lead">A contested position invites quotation, and readers who oppose the quoting account frequently follow the account quoted. The platform has since reduced the circulation of purely inflammatory material, which confines the method to substantive disagreement:</p>
-          <a class="xpost" href="https://x.com/nikitabier/status/2089763962330230803" target="_blank" rel="noopener">
-            <div class="xhead">
-              <img loading="lazy" decoding="async" class="xav" src="assets/av-nikita.jpg" alt="">
-              <div class="xwho"><span class="xname">Nikita Bier</span><span class="xhandle">@nikitabier &middot; Aug 18</span></div>
-              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </div>
-            <p class="xtext">The largest contributor of seeing ragebait was the reply predictor and we were aware that angry replies were causing people to see more of that content.
-
-So last month, we gave the reply predictor a 15x boost if it&rsquo;s a friend&rsquo;s post&mdash;and it reduced ragebait by order of magnitude.</p>
-            <div class="xstats">
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.6 0-3.1-.4-4.4-1.2L3 20l1.3-4.1A8.5 8.5 0 1121 11.5z"/></svg>66</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>37</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>722</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>35K</span>
-            </div>
-          </a>
-        </article>
-
+          </article>
+          <article class="card" data-guidance-entry="9">
+            <span class="card-kicker">Useful notification</span>
+            <h3>Tag the specific people it is useful to</h3>
+            <p>Try accounts with 500 to 3,000 followers whose work the post actually bears on. It lands in their notifications and gives them a reason to share it.</p>
+            <div class="why"><b>Keep it specific.</b> The point should genuinely be relevant to them.</div>
+          </article>
+          <article class="card" data-guidance-entry="10">
+            <span class="card-kicker">In person</span>
+            <h3>Ask for the follow directly</h3>
+            <p>When you meet someone in person, ask them to follow you. Say it plainly. Offering to follow them back weakens the ask and usually goes nowhere.</p>
+          </article>
+          <article class="card" data-guidance-entry="11">
+            <span class="card-kicker">Relationship practice</span>
+            <h3>Build the Hitlist as a mountain</h3>
+            <p>Start with people you can reach now: those who reply often, have smaller followings or have met you. Each real relationship makes the next tier more plausible.</p>
+            <div class="why"><b>Climb.</b> A reply or follow from someone established makes the people around them more likely to answer you.</div>
+          </article>
+        </div>
+        <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        <div class="dots" aria-hidden="true"></div>
       </div>
-      <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-      <div class="dots" aria-hidden="true"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============ V · IN PERSON ============ -->
-  <section class="panel" id="p-5">
-    <div class="panel-head">
-      <div class="chapno">v &middot; Offline gatherings</div>
-      <h2>Conversion from <em>physical gatherings</em></h2>
-      <p>Attendance supplies two things at once: original material unavailable to those not present, and direct contact with potential followers. Neither is commonly exploited by attendees.</p>
-    </div>
-    <div class="deck-shell">
-      <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="deck" tabindex="0" aria-label="In person, cards">
-
-        <article class="card">
-          <h3>Documentation of live events</h3>
-          <p class="lead">Photographing the most unusual object present and naming the event combines original material with an active search term, compounding two of the effects described above on a single post. The example below was taken and published on the floor:</p>
-          <a class="xpost" href="https://x.com/MozeTech/status/2086361458108252246" target="_blank" rel="noopener">
-            <div class="xhead">
-              <img loading="lazy" decoding="async" class="xav" src="assets/av-moze.jpg" alt="">
-              <div class="xwho"><span class="xname">Max Med</span><span class="xhandle">@MozeTech &middot; Aug 9</span></div>
-              <svg class="xlogo" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25h6.826l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </div>
-            <p class="xtext">met the thanos of defcon, dude hooked up a flipper zero to this glove so now he can flick his fingers and hack your shit</p>
-            <div class="xmedia one"><div class="xm"><img loading="lazy" decoding="async" src="assets/ph-thanos.jpg" alt=""></div></div>
-            <div class="xstats">
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M21 6H8a4 4 0 00-4 4v1"/><path d="M7 22l-4-4 4-4"/><path d="M3 18h13a4 4 0 004-4v-1"/></svg>4</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.8-9.5-9C1 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23 8.5 21.5 12c-2 4.2-9.5 9-9.5 9z"/></svg>43</span>
-              <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>2K</span>
-            </div>
-          </a>
-        </article>
-
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/><path d="M18 6l1 1 2-2.5"/></svg></div>
-          <h3>Direction of the follow request</h3>
-          <p>Asking a new contact to follow the account, rather than offering to follow theirs, transfers the action to them while the meeting is still in progress. Where the initiative is left with the other party, the connection is frequently never completed. Stating that the application is not installed on the phone is sufficient to redirect the request.</p>
-          <div class="why"><b>Mechanism.</b> The party who performs the action at the time is the party who has committed to it.</div>
-        </article>
-
+    <section class="panel" id="your-work">
+      <div class="panel-head">
+        <div class="chapno">iv · Your work</div>
+        <h2>Publish <em>continuously</em></h2>
+        <p>Turn the work already happening into credible material, make it useful, and vary the subject so your own posts do not crowd one another out.</p>
       </div>
-      <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-      <div class="dots" aria-hidden="true"></div>
-    </div>
-  </section>
-
-  <!-- ============ VI · SHARING YOUR WORK ============ -->
-  <section class="panel" id="p-6">
-    <div class="panel-head">
-      <div class="chapno">vi &middot; Publication of ongoing work</div>
-      <h2>Continuous <em>publication of work</em></h2>
-      <p>Most work of any interest is never published. Where no confidentiality constraint applies, output that already exists can be converted into material at negligible additional cost, which is the cheapest source of supply available.</p>
-    </div>
-    <div class="deck-shell">
-      <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="deck" tabindex="0" aria-label="Sharing your work, cards">
-
-        <article class="card">
-          <h3>Small artifacts aligned with the account's subject</h3>
-          <p class="lead">A minor application related to the account's stated domain supplies readers with grounds to expect further work of the same kind, and production cost is low under current tooling. The example below documents a combat prototype:</p>
-          <a class="xpost" href="https://x.com/SargantanaGames/status/2087583747105304896" target="_blank" rel="noopener">
+      <div class="deck-shell">
+        <button class="arrow prev" aria-label="Previous card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="deck" tabindex="0" aria-label="Your work guidance, cards">
+          <article class="card" data-guidance-entry="12">
+            <span class="card-kicker">Unfinished work · example one</span>
+            <h3>Post your work while it is unfinished</h3>
+            <p class="lead">Prototypes, rough footage, drafts, things that do not work yet. The work already exists, and showing it makes everything else you say credible.</p>
+            <a class="xpost" href="https://x.com/SargantanaGames/status/2087583747105304896" target="_blank" rel="noopener">
             <div class="xhead">
               <img loading="lazy" decoding="async" class="xav" src="assets/av-sarg.jpg" alt="">
               <div class="xwho"><span class="xname">VPetlings</span><span class="xhandle">@SargantanaGames &middot; Aug 12</span></div>
@@ -836,19 +1282,12 @@ So last month, we gave the reply predictor a 15x boost if it&rsquo;s a friend&rs
               <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>25K</span>
             </div>
           </a>
-        </article>
-
-        <article class="card">
-          <h3>Automated production of launch material</h3>
-          <p class="lead">Video can be generated from a written description without manual editing, which removes the principal cost of publishing media. The sequence below was produced by a single instruction to a model using Remotion, with no subsequent editing:</p>
-          <div class="vidwrap"><video controls playsinline preload="metadata" src="assets/forkcast-trailer.mp4"></video></div>
-          <div class="vidcap">Forkcast trailer, generated with Claude and Remotion</div>
-        </article>
-
-        <article class="card">
-          <h3>Recording of process material</h3>
-          <p class="lead">Footage of work in progress exists as a byproduct of the work itself and requires only that recording be started beforehand. Unedited material, defects included, is received as more credible than finished presentation. The example below reports both a result and its failures:</p>
-          <a class="xpost" href="https://x.com/MozeTech/status/2080813530203508948" target="_blank" rel="noopener">
+          </article>
+          <article class="card" data-guidance-example="12">
+            <span class="card-kicker">Unfinished work · example two</span>
+            <h3>Leave the failures in</h3>
+            <p class="lead">Record the process before it is polished. A result with its defects still visible is material you can publish without inventing a separate performance.</p>
+            <a class="xpost" href="https://x.com/MozeTech/status/2080813530203508948" target="_blank" rel="noopener">
             <div class="xhead">
               <img loading="lazy" decoding="async" class="xav" src="assets/av-moze.jpg" alt="">
               <div class="xwho"><span class="xname">Max Med</span><span class="xhandle">@MozeTech &middot; Jul 25</span></div>
@@ -864,16 +1303,51 @@ three.js, per-country SEIR model, raycast vertex sculpting on the virus mesh its
               <span class="xstat"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/></svg>299</span>
             </div>
           </a>
-        </article>
-
+          </article>
+          <article class="card" data-guidance-entry="13">
+            <span class="card-kicker">Reusable value</span>
+            <h3>Post things a reader can use</h3>
+            <p>Prompts, methods, workflows. Anything reusable turns readers into followers more reliably than opinion because they want the next one.</p>
+          </article>
+          <article class="card" data-guidance-entry="14">
+            <span class="card-kicker">Feed spacing</span>
+            <h3>Vary your subject matter across the day</h3>
+            <p>Same-topic posts get attenuated through a separate mechanism that tracks the subject. Three posts on one theme compete twice over.</p>
+            <div class="why"><b>Also.</b> Keep your own daily output to two or three posts.</div>
+          </article>
+          <article class="card" data-guidance-entry="15">
+            <span class="card-kicker">Progress practice</span>
+            <h3>Keep Milestones</h3>
+            <p>Record what you have achieved on the way: a stage you have moved past, the level you are on now, or the target you are working toward.</p>
+            <div class="why"><b>Why.</b> Visible progress separates people doing the work from people talking about it.</div>
+          </article>
+        </div>
+        <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        <div class="dots" aria-hidden="true"></div>
       </div>
-      <button class="arrow next" aria-label="Next card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-      <div class="dots" aria-hidden="true"></div>
-    </div>
-  </section>
+    </section>
+
+    <section class="discipline" id="discipline" aria-labelledby="discipline-title">
+      <div class="panel-head">
+        <div class="chapno">Discipline</div>
+        <h2 id="discipline-title">Keep the programme <em>running</em></h2>
+        <p>This part is practice, not illustration. Set the boundary once, then review the experiment every week.</p>
+      </div>
+      <div class="discipline-grid">
+        <article class="discipline-card" data-guidance-entry="16">
+          <h3>Keep a Constraints List</h3>
+          <p>Decide what you will not post. The purpose is that no current or potential stakeholder — anyone who might give money, introductions or another resource — opts out because of something on your timeline. Treat it as your own PR training.</p>
+        </article>
+        <article class="discipline-card" data-guidance-entry="17">
+          <h3>Review the week every Sunday</h3>
+          <p>Go through your analytics, traction and stats. Record what worked and what did not. The programme is experimental; the review is how one person's test becomes a usable head start for everyone else.</p>
+        </article>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
-    <p>Prompts and reusable skills for generating launch material will be added to this document.</p>
+    <p>Complete the KPIs every day. Review them every Sunday.</p>
   </footer>
 
 </div>
@@ -956,6 +1430,7 @@ three.js, per-country SEIR model, raycast vertex sculpting on the virus mesh its
     sync();
   });
   window.addEventListener('resize', () => syncFns.forEach(f => f()));
+
 </script>
 
 </body>
