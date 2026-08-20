@@ -568,6 +568,8 @@
   .kpi-list { display: grid; gap: 16px; }
   .kpi-row {
     overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
     background: var(--glass);
     border: 1.5px solid var(--edge);
     border-radius: 28px;
@@ -629,52 +631,30 @@
     text-underline-offset: 3px;
   }
 
-  .kpi-example { border-top: 1px solid var(--hairline); }
-  .kpi-example summary {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 15px clamp(22px, 3.6vw, 38px);
-    cursor: pointer;
-    color: var(--accent);
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 14px;
-  }
-  .kpi-example summary::-webkit-details-marker { display: none; }
-  .kpi-example summary::after {
-    content: "+";
-    width: 27px;
-    height: 27px;
-    border: 1px solid var(--hairline);
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    flex: none;
-    font-family: var(--sans);
-    font-style: normal;
-    font-size: 17px;
-    line-height: 1;
-  }
-  .kpi-example[open] summary::after { content: "−"; }
-  .kpi-example summary:hover { background: var(--glass); }
-  .kpi-example summary:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: -4px;
-    border-radius: 12px;
+  .kpi-example {
+    border-top: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, 0.2);
   }
   .example-body {
-    padding: 4px clamp(22px, 3.6vw, 38px) clamp(24px, 3.6vw, 38px);
+    padding: clamp(22px, 3.6vw, 38px);
+    display: grid;
+    gap: 18px;
+    align-content: start;
   }
   .example-body > .xpost,
   .example-body > .dm { max-width: 430px; }
-  .example-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 430px));
-    gap: 18px;
-    align-items: start;
+
+  @media (min-width: 940px) {
+    .kpi-row:has(.kpi-example) {
+      grid-template-columns: minmax(0, 1fr) clamp(340px, 34%, 486px);
+      align-items: stretch;
+    }
+    .kpi-row:has(.kpi-example) .kpi-example {
+      border-top: none;
+      border-left: 1px solid var(--hairline);
+    }
+    .example-body > .xpost,
+    .example-body > .dm { max-width: none; }
   }
 
   /* ---------- guidance additions ---------- */
@@ -869,8 +849,7 @@
               <a class="mechanism-link" href="#timing">How it works: Timing ↓</a>
             </div>
           </div>
-          <details class="kpi-example">
-            <summary>See the real post</summary>
+          <div class="kpi-example">
             <div class="example-body">
               <a class="xpost" href="https://x.com/nikitabier/status/2089763962330230803" target="_blank" rel="noopener">
             <div class="xhead">
@@ -889,7 +868,7 @@ So last month, we gave the reply predictor a 15x boost if it&rsquo;s a friend&rs
             </div>
           </a>
             </div>
-          </details>
+          </div>
         </article>
 
         <article class="kpi-row" id="original-posts">
@@ -907,8 +886,7 @@ So last month, we gave the reply predictor a 15x boost if it&rsquo;s a friend&rs
               <a class="mechanism-link" href="#your-work">How it works: Your work ↓</a>
             </div>
           </div>
-          <details class="kpi-example">
-            <summary>See the useful form</summary>
+          <div class="kpi-example">
             <div class="example-body">
               <a class="xpost" href="https://x.com/jumperz/status/2077884505612750861" target="_blank" rel="noopener">
             <div class="xhead">
@@ -934,7 +912,7 @@ andonorris official website&hellip; <span class="xmore">Show more</span></p>
             </div>
           </a>
             </div>
-          </details>
+          </div>
         </article>
 
         <article class="kpi-row" id="direct-messages">
@@ -952,8 +930,7 @@ andonorris official website&hellip; <span class="xmore">Show more</span></p>
               <a class="mechanism-link" href="#other-people">How it works: Other people ↓</a>
             </div>
           </div>
-          <details class="kpi-example">
-            <summary>See the real exchange</summary>
+          <div class="kpi-example">
             <div class="example-body">
               <div class="dm">
             <div class="dm-head">
@@ -976,7 +953,7 @@ andonorris official website&hellip; <span class="xmore">Show more</span></p>
             <div class="dm-meta left">just now</div>
           </div>
             </div>
-          </details>
+          </div>
         </article>
 
         <article class="kpi-row" id="replies">
@@ -992,8 +969,7 @@ andonorris official website&hellip; <span class="xmore">Show more</span></p>
               <a class="mechanism-link" href="#other-people">How it works: Other people ↓</a>
             </div>
           </div>
-          <details class="kpi-example">
-            <summary>See both reply patterns</summary>
+          <div class="kpi-example">
             <div class="example-body example-grid">
               <a class="xpost" href="https://x.com/kelvinbuildss/status/2076776457066467423" target="_blank" rel="noopener">
             <div class="xhead">
@@ -1031,7 +1007,7 @@ next time: validate the market first, then build.</p>
             </div>
           </a>
             </div>
-          </details>
+          </div>
         </article>
 
         <article class="kpi-row" id="deliberate-follows">
